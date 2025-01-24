@@ -10,8 +10,6 @@ from mkdocs.structure.files import Files
 # Plugin
 # ------------------------
 
-SEARCH_PATTERN = r'!\[(.*?)\]\((.*?.puml)\)'
-REPLACEMENT_PATTERN = r'```puml\n<$2.puml>\n```'
 
 class PlantUmlFilePlugin(BasePlugin):
     """
@@ -31,5 +29,8 @@ class PlantUmlFilePlugin(BasePlugin):
 
 
     def on_pre_page( self, page: Page, /, *, config: MkDocsConfig, files: Files ):
-        page.markdown = re.sub( SEARCH_PATTERN, REPLACEMENT_PATTERN, page.markdown )
+        search_pattern = r"!\[(.*?)\]\((.*?.puml)\)"
+        replacement_pattern = r"```puml\n<$2.puml>\n```"
+
+        page.markdown = re.sub( search_pattern, replacement_pattern, page.markdown )
         return page
