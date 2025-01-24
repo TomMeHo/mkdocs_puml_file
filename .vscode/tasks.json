@@ -4,7 +4,7 @@
       {
         "label": "Install Plugin",
         "type": "shell",
-        "command": "pip install mkdocs_puml_file/",
+        "command": "pip install .",
         "group": "none",
         "presentation": {
           "reveal": "always",

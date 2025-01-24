@@ -1,2 +1,2 @@
 [mkdocs.plugins]
-puml_file = mkdocs_puml_file:PlantUmlFilePlugin
+puml_file = mkdocs_puml_file.plugin:PlantUmlFilePlugin
