@@ -4,9 +4,9 @@ edit_uri: blob/master/example/
 
 nav:
   - test: 'index.md'
-  
-#plugins:
-#    - search
-#    - 
-    
+
+plugins:
+    - search
+    - puml_file
+
 #repo_url: https://github.com/onixpro/mkdocs-drawio-file

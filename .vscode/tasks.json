@@ -2,6 +2,20 @@
     "version": "2.0.0",
     "tasks": [
       {
+        "label": "Install Plugin",
+        "type": "shell",
+        "command": "pip install mkdocs_puml_file/",
+        "group": "none",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "runOptions": {
+          "runOn": "folderOpen"
+        },
+        "problemMatcher": []
+      },
+      {
         "label": "Launch mkdocs",
         "type": "shell",
         "command": "mkdocs serve -a 0.0.0.0:8002 -f example/mkdocs.yml",
@@ -13,6 +27,7 @@
         "runOptions": {
           "runOn": "folderOpen"
         },
+        "dependsOn":[ "Install Plugin" ],
         "problemMatcher": []
       }
     ]
