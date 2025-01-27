@@ -2,6 +2,7 @@ import re
 import os
 import mkdocs
 import logging
+from pathlib import Path
 from mkdocs.plugins import BasePlugin
 from mkdocs.structure.pages import Page
 from mkdocs.config.defaults import MkDocsConfig
@@ -17,7 +18,7 @@ class PlantUmlFilePlugin(BasePlugin):
     Plugin that allows to embed PlantUML files into your markdown documents.
     Must be placed before plugin mkdocs_puml
     """
-    config_scheme = (   
+    config_scheme = (
         (
             "file_extension",
             mkdocs.config.config_options.Type(str, default=".puml"),
@@ -33,12 +34,13 @@ class PlantUmlFilePlugin(BasePlugin):
         iterator = re.finditer(search_pattern, markdown)
         for occurence in reversed(list(iterator)):
             filename = occurence.group(1)
-            filename = os.path.abspath(( page.file.src_dir + "/" +  filename ))
-
+            filename = os.path.abspath(Path(page.file.abs_src_path).parent.joinpath(filename))
+            
             puml_file_content = next((f.content_string for f in files.media_files() if (f.abs_src_path == filename)), "###")
 
             if puml_file_content == "###":
-                self.log.warning("Plugin PUML_FILE: File %s not found.", filename)
+                self.log.warning("Plugin PUML_FILE: Page path is %s", page.file.src_dir)
+                self.log.error("Plugin PUML_FILE: File %s not found.", filename)
                 puml_file_content = "--- file not found ---"
 
             if len(puml_file_content) == 0:

@@ -10,7 +10,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="mkdocs_puml_file",
-    version="1.0.2",
+    version="1.0.3",
     description="A MkDocs plugin that allows to embed PlantUML files.",
     long_description=long_description,
     long_description_content_type="text/markdown",
