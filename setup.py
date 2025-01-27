@@ -30,6 +30,5 @@ setup(
         exclude=["*.tests", "*.tests.*", "tests.*", "tests", "example"]
     ),
     entry_points={
-        "mkdocs.plugins": [ "puml_file = mkdocs_puml_file:PlantUmlFilePlugin", ] },
-        #"mkdocs.plugins": [ "puml_file = PlantUmlFilePlugin", ] },
+        "mkdocs.plugins": [ "puml-file = mkdocs_puml_file:PlantUmlFilePlugin", ] },
 )

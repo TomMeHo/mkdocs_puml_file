@@ -7,7 +7,7 @@ nav:
 
 plugins:
     - search
-    - puml_file
+    - puml-file
     - plantuml:
         puml_url: https://www.plantuml.com/plantuml/
 

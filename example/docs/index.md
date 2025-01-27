@@ -2,7 +2,7 @@
 
 Here, a PUML file should be embedded:
 
-![test puml file](diagram1.puml)
+![test puml file](./diagram1.puml)
 
 Text after the embedded fence.
 
