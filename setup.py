@@ -8,12 +8,9 @@ def read(name):
 with open("README.md", "r") as f:
     long_description = f.read()
 
-with open('VERSION', 'r') as f:
-    __version__ = f.read().strip()
-
 setup(
     name="mkdocs_puml_file",
-    version=__version__,
+    version="1.0.1",
     description="A MkDocs plugin that allows to embed PlantUML files.",
     long_description=long_description,
     long_description_content_type="text/markdown",
