@@ -1,4 +1,5 @@
 import re
+import os
 import mkdocs
 import logging
 from mkdocs.plugins import BasePlugin
@@ -29,13 +30,13 @@ class PlantUmlFilePlugin(BasePlugin):
     def on_page_markdown( self, markdown: str, page: Page, config: MkDocsConfig, files: Files ):
         search_pattern = r"!\[.*?\]\((.*?.puml)\)"
 
-        for file in files.media_files():
-            self.log.debug("PUML_FILE --------- " + file.src_path + " - " + file.abs_src_path + " --- " + file.src_uri)
-
         iterator = re.finditer(search_pattern, markdown)
         for occurence in reversed(list(iterator)):
             filename = occurence.group(1)
-            puml_file_content = next((f.content_string for f in files.media_files() if (f.src_uri == filename)), "###")
+            filename = os.path.abspath(( page.file.src_dir + "/" +  filename ))
+
+            puml_file_content = next((f.content_string for f in files.media_files() if (f.abs_src_path == filename)), "###")
+
             if puml_file_content == "###":
                 self.log.warning("Plugin PUML_FILE: File %s not found.", filename)
                 puml_file_content = "--- file not found ---"
@@ -45,5 +46,4 @@ class PlantUmlFilePlugin(BasePlugin):
 
             puml_file_content = f"```puml\n{puml_file_content}\n```\n"
             markdown = markdown[:occurence.start()] + puml_file_content + markdown[occurence.end():]
-        self.log.debug(markdown)
         return markdown
