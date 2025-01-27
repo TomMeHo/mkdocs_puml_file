@@ -1,0 +1,14 @@
+site_name: test_mkdocs_puml_file
+docs_dir: docs
+edit_uri: blob/master/example/
+
+nav:
+  - test: 'index.md'
+
+plugins:
+    - search
+    - puml_file
+    - plantuml:
+        puml_url: https://www.plantuml.com/plantuml/
+
+#repo_url: https://github.com/onixpro/mkdocs-drawio-file
