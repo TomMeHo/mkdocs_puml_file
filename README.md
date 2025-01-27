@@ -1,4 +1,6 @@
-# MkDocs Plugin for embedding PlantUML files
+# mkdocs_puml_file
+
+A MkDocs Plugin for embedding PlantUML files.
 
 ## Features
 
