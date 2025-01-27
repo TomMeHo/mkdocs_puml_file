@@ -8,5 +8,7 @@ nav:
 plugins:
     - search
     - puml_file
+    - plantuml:
+        puml_url: https://www.plantuml.com/plantuml/
 
 #repo_url: https://github.com/onixpro/mkdocs-drawio-file
